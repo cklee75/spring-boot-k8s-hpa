@@ -1,11 +1,11 @@
-FROM maven:3.5.3-jdk-10-slim as build
+FROM maven:3.9.6-eclipse-temurin-17-alpine as build
 
 WORKDIR /app
 COPY pom.xml .
 COPY src src
 RUN mvn package -q -Dmaven.test.skip=true
 
-FROM openjdk:10.0.1-10-jre-slim
+FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 EXPOSE 8080
