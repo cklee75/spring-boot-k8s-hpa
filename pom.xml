@@ -23,6 +23,8 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>17</java.version>
         <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
+        <app.image.name>spring_boot_jib_k8s_hpa</app.image.name>
+		<app.image.tag>latest</app.image.tag>
     </properties>
 
     <dependencies>
@@ -94,6 +96,26 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+
+        	<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>3.4.0</version>
+				<configuration>
+					<from>
+						<image>openjdk:17-alpine</image>
+					</from>
+                    <to>
+                        <image>${app.image.name}:${app.image.tag}</image>
+                    </to>
+					<container>
+						<!-- <ports>
+							<port>8080</port>
+						</ports> -->
+                        <format>OCI</format>
+					</container>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 </project>
